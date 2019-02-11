@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+</head>
+<body>
+    <div class="hero is-fullheight is-dark">
+        <div class="columns">
+            <div class="hero-body">
+                <div class="column"></div>
+                <div class="column has-text-centered">
+                    <h1 class="title">Welcome to the Great Number Game</h1>
+                    <p>I am thinking of a number between 1 and 100!</p>
+                    <p>Take a guess!</p>
+                    <p>{{ session['ran_num'] }}</p>
+                    <p>You have {{ session['count'] }} guesses left to make</p>
+                    {% if session['result'] %}
+                        <div class="notification {{ session['class'] }}">
+                            <p>{{ session['result'] }}</p>
+                            {% if session['result'] == 'Just Right' or session['result'] == 'You lose' %}
+                                <form action="/winner_circle" method="post">
+                                    <div class="field">
+                                            <div class="control">
+                                                <input type="text" name="name" class="input">
+                                            </div>
+                                        </div>
+                                        <div class="field is-grouped is-grouped-centered">
+                                            <div class="control">
+                                                <button class="button is-info">Submit</button>
+                                            </div>
+                                        </div>
+                                </form>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    {% if session['result'] != 'Just Right' and session['count'] != 0 %}
+                        <form action="/process" method="post">
+                            <div class="field">
+                                <div class="control">
+                                    <input type="number" name="guess" class="input">
+                                </div>
+                            </div>
+                            <div class="field is-grouped is-grouped-centered">
+                                <div class="control">
+                                    <button class="button is-info">Guess</button>
+                                </div>
+                            </div>
+                        </form>
+                    {% endif %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th># of Guesses</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for winner in leaders %}
+                                <tr>
+                                    <td>{{ winner['name'] }}</td>
+                                    <td>{{ winner['amount_of_guesses'] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                </div>
+                <div class="column"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
