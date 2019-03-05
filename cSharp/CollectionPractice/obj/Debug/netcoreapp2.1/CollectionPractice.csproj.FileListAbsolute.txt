@@ -1,0 +1,11 @@
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/bin/Debug/netcoreapp2.1/CollectionPractice.deps.json
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/bin/Debug/netcoreapp2.1/CollectionPractice.runtimeconfig.json
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/bin/Debug/netcoreapp2.1/CollectionPractice.runtimeconfig.dev.json
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/bin/Debug/netcoreapp2.1/CollectionPractice.dll
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/bin/Debug/netcoreapp2.1/CollectionPractice.pdb
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/obj/Debug/netcoreapp2.1/CollectionPractice.csprojAssemblyReference.cache
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/obj/Debug/netcoreapp2.1/CollectionPractice.csproj.CoreCompileInputs.cache
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/obj/Debug/netcoreapp2.1/CollectionPractice.AssemblyInfoInputs.cache
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/obj/Debug/netcoreapp2.1/CollectionPractice.AssemblyInfo.cs
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/obj/Debug/netcoreapp2.1/CollectionPractice.dll
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/CollectionPractice/obj/Debug/netcoreapp2.1/CollectionPractice.pdb
