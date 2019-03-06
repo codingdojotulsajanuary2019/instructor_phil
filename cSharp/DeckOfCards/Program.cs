@@ -17,11 +17,13 @@ namespace DeckOfCards
             for(int i=0; i<Players.Length; i++) {
                 Game.Add(new Player(Players[i]));
             }
+            
             for(int i=0; i<Players.Length; i++) {
                 for(int j=0; j<2; j++) {
                     Game[i].Draw(newDeck);
                 }
             }
+
             for(int i=0; i<Players.Length; i++) {
                 Console.WriteLine($"--------------------------------- {Game[i].Name} cards ---------------------------------");
                 for(int j = 0; j<Game[i].Hand.Count; j++)
