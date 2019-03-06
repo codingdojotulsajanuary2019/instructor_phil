@@ -73,6 +73,14 @@ namespace CollectionPractice
             foreach(var result in Users) {
                 Console.WriteLine($"{result.Key} likes {result.Value}");
             }
+
+            foreach(string flav in Flavors)
+            {
+                if(flav == "Lemon") {
+                    int Idx = Flavors.IndexOf(flav);
+                    Flavors[Idx] = "Cherry";
+                }
+            }
         }
     }
 }
