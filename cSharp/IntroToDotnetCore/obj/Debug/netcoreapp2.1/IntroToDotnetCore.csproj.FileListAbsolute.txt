@@ -21,3 +21,4 @@
 /Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/IntroToDotnetCore/obj/Debug/netcoreapp2.1/IntroToDotnetCore.Views.pdb
 /Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/IntroToDotnetCore/obj/Debug/netcoreapp2.1/IntroToDotnetCore.csproj.CopyComplete
 /Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/IntroToDotnetCore/obj/Debug/netcoreapp2.1/Razor/Views/Hello/Process.g.cshtml.cs
+/Users/pkrull/Documents/codingDojo/cohorts/tulsa_jan_2019/cSharp/IntroToDotnetCore/obj/Debug/netcoreapp2.1/Razor/Views/Hello/Index.g.cshtml.cs

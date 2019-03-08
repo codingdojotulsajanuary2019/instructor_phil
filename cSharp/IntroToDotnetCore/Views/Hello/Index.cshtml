@@ -1,0 +1,45 @@
+@using IntroToDotnetCore.Models
+@model ViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/style/bulma.css">
+</head>
+<body>
+    <section class="hero is-fullheight is-info has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">All Authors</h1>
+                <ul>
+                    @{foreach(Author author in Model.Authors)
+                        {
+                            <li>@author.Name</li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="has-text-left">
+                <form action="/authors" method="post">
+                    <div class="field">
+                        <label asp-for="Author.Name" class="label">Name:</label>
+                        <div class="control">
+                            <input type="text" asp-for="Author.Name" class="input">
+                        </div>
+                        <span class="help is-danger" asp-validation-for="Author.Name"></span>
+                    </div>
+                    <div class="control">
+                        <button class="button">Add Author</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

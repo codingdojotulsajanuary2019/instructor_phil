@@ -18,3 +18,8 @@
 * Data layer
 * Logic layer
 * Interaction to DB
+
+## Models
+* ViewModel
+* Model with Forms
+* Validations
