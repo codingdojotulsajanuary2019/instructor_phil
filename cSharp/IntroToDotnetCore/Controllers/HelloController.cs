@@ -74,11 +74,11 @@ namespace IntroToDotnetCore.Controllers
                 TempData["name"] = Author.Name;
                 HttpContext.Session.SetString("name", Author.Name);
                 int? num = HttpContext.Session.GetInt32("count");
-                int num2 = (int)num++;
+                // int num2 = (int)num++;
                 System.Console.WriteLine("===========================================");
                 // System.Console.WriteLine(num2);
                 System.Console.WriteLine("===========================================");
-                HttpContext.Session.SetInt32("count", num2);
+                HttpContext.Session.SetInt32("count", (int)++num);
 
                 return RedirectToAction("Index");
             } else {
