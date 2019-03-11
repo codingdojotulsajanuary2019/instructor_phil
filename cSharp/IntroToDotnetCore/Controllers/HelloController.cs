@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using IntroToDotnetCore.Models;
 
 namespace IntroToDotnetCore.Controllers
@@ -11,18 +12,33 @@ namespace IntroToDotnetCore.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            List<Author> Authors = new List<Author>()
+            System.Console.WriteLine("---------------------------------------------------");
+            int? num = HttpContext.Session.GetInt32("count");
+            Console.WriteLine(num);
+            if(num == null)
             {
-                new Author("Dr. Suess"),
-                new Author("Tom Clancy"),
-                new Author("JK Rowling")
-            };
+                HttpContext.Session.SetInt32("count", 0);
+                List<Author> Authors = new List<Author>()
+                {
+                    new Author("Dr. Suess"),
+                    new Author("Tom Clancy"),
+                    new Author("JK Rowling")
+                };
+                HttpContext.Session.SetObjectAsJson("Authors", Authors);
+            }
+
+            string name = HttpContext.Session.GetString("name");
+            System.Console.WriteLine(name);
+
+            List<Author> AuthorsAdded = HttpContext.Session.GetObjectFromJson<List<Author>>("Authors");
+
             // retreive the form data from TempData and add to the Author list
-            Authors.Add(new Author((string)TempData["name"]));
+            AuthorsAdded.Add(new Author((string)TempData["name"]));
+            HttpContext.Session.SetObjectAsJson("Authors", AuthorsAdded);
 
             ViewModel ModelToView = new ViewModel()
             {
-                Authors = Authors
+                Authors = AuthorsAdded
             };
 
             return View(ModelToView);
@@ -40,22 +56,30 @@ namespace IntroToDotnetCore.Controllers
         {
             Console.WriteLine(Author);
             Console.WriteLine(Author.Name);
-            List<Author> Authors = new List<Author>()
-            {
-                new Author("Dr. Suess"),
-                new Author("Tom Clancy"),
-                new Author("JK Rowling")
-            };
+            // List<Author> Authors = new List<Author>()
+            // {
+            //     new Author("Dr. Suess"),
+            //     new Author("Tom Clancy"),
+            //     new Author("JK Rowling")
+            // };
 
             ViewModel ModelToView = new ViewModel()
             {
-                Authors = Authors,
+                Authors = HttpContext.Session.GetObjectFromJson<List<Author>>("Authors"),
                 Author = Author
             };
 
             if(ModelState.IsValid)
             {
                 TempData["name"] = Author.Name;
+                HttpContext.Session.SetString("name", Author.Name);
+                int? num = HttpContext.Session.GetInt32("count");
+                int num2 = (int)num++;
+                System.Console.WriteLine("===========================================");
+                // System.Console.WriteLine(num2);
+                System.Console.WriteLine("===========================================");
+                HttpContext.Session.SetInt32("count", num2);
+
                 return RedirectToAction("Index");
             } else {
                 Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
