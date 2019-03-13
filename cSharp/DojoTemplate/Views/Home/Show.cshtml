@@ -1,0 +1,23 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">@Model.Name</h1>
+        <h3>Description:</h3>
+        <ul>
+            <li class="lead">@Model.Description</li>
+        </ul>
+        <h3>Trail Length:</h3>
+        <ul>
+            <li class="lead">@Model.Length Miles</li>
+        </ul>
+        <h3>Elevation Change:</h3>
+        <ul>
+            <li class="lead">@Model.Elevation feet</li>
+        </ul>
+        <div class="col-sm-5 col-sm-offset-7">
+            <div class="row">
+                <p class="lead">Longitude: @Model.Longitude | Latitude: @Model.Latitude</p>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</div>

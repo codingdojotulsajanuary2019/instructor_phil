@@ -1,2 +1,27 @@
-﻿<h1>Index View</h1>
-<p>Get to building things!</p>
+﻿<div>
+    <h1>Lost in the Woods</h1>
+    <p>List of local hiking Trails</p>
+</div>
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Trail Name</th>
+                <th>Trail Length</th>
+                <th>Elevation Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach(Trail t in Model)
+                {
+                    <tr>
+                        <td><a href="/trails/@t.TrailId">@t.Name</a></td>
+                        <td>@t.Length miles</td>
+                        <td>@t.Elevation ft</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <a href="/new">Add a new Trail</a>
+</div>

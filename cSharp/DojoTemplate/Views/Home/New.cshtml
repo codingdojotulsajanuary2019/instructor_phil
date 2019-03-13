@@ -1,0 +1,52 @@
+@model Trail
+<div>
+    <h1>Add a New Trail</h1>
+        <form action="/trails" method="post">
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input asp-for="Name" class="form-control" id="name">
+                    <span class="alert text-danger" asp-validation-for="Name"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Description" class="col-sm-2 col-form-label">Description:</label>
+                <div class="col-sm-10">
+                    <input asp-for="Description" class="form-control" id="Description">
+                    <span class="alert text-danger" asp-validation-for="Description"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Length" class="col-sm-2 col-form-label">Length:</label>
+                <div class="col-sm-10">
+                    <input asp-for="Length" class="form-control" id="Length">
+                    <span class="alert text-danger" asp-validation-for="Length"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="elevation" class="col-sm-2 col-form-label">Elevation Change:</label>
+                <div class="col-sm-10">
+                    <input asp-for="Elevation" class="form-control" id="elevation">
+                    <span class="alert text-danger" asp-validation-for="Elevation"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                    <label for="Latitude" class="col-sm-2 col-form-label">Latitude:</label>
+                    <div class="col-sm-4">
+                        <input asp-for="Latitude" class="form-control" id="Latitude">
+                        <span class="alert text-danger" asp-validation-for="Latitude"></span>
+                    </div>
+                    <label for="Longitude" class="col-sm-2 col-form-label">Longitude:</label>
+                    <div class="col-sm-4">
+                        <input asp-for="Longitude" class="form-control" id="Longitude">
+                        <span class="alert text-danger" asp-validation-for="Longitude"></span>
+                    </div>
+                </div>
+            <div class="form-group row">
+                <div class="col-sm-2 offset-sm-10">
+                    <button type="submit" class="btn btn-primary">Create Record</button>
+                </div>
+            </div>
+        </form>
+        <a href="/" class="btn">Home</a>
+</div>

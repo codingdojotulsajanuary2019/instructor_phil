@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DojoTemplate.Models;
+using DojoTemplate.Factory;
 
 namespace DojoTemplate.Controllers
 {
@@ -17,5 +18,16 @@ namespace DojoTemplate.Controllers
             return View();
         }
 
+        [HttpGet("new")]
+        public IActionResult New()
+        {
+            return View();
+        }
+
+        [HttpGet("trails/{trail_id}")]
+        public IActionResult Show(long trail_id)
+        {
+            return View();
+        }
     }
 }
