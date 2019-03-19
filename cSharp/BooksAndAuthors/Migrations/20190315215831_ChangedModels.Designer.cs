@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BooksAndAuthors.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20190314191858_AddAuthor")]
-    partial class AddAuthor
+    [Migration("20190315215831_ChangedModels")]
+    partial class ChangedModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace BooksAndAuthors.Migrations
 
             modelBuilder.Entity("BooksAndAuthors.Models.Author", b =>
                 {
-                    b.Property<long>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreatedAt");
@@ -34,6 +34,35 @@ namespace BooksAndAuthors.Migrations
                     b.HasKey("AuthorId");
 
                     b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("BooksAndAuthors.Models.Book", b =>
+                {
+                    b.Property<int>("BookId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AuthorId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.Property<DateTime>("UpdatedAt");
+
+                    b.HasKey("BookId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("BooksAndAuthors.Models.Book", b =>
+                {
+                    b.HasOne("BooksAndAuthors.Models.Author", "Author")
+                        .WithMany("Wrote")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

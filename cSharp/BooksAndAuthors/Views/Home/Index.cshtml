@@ -4,8 +4,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <h1>Add Author</h1>
-                
-                <form action="authors" method="post">
+                <form action="/authors" method="post">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" asp-for="Author.Name"></label>
                         <div class="col-sm-10">
@@ -19,18 +18,137 @@
                         </div>
                     </div>
                 </form>
-                
+            </div>
+            <div class="col-sm-6">
                 <h1>All Authors</h1>
-                    <ul class="list-unstyled">
-                        @{foreach(Author a in Model.Authors)
+                <ul class="list-unstyled">
+                    @{foreach(Author a in Model.Authors)
+                        {
+                            <li>@a.Name
+                                <ul>
+                                    @{foreach(Book b in a.Wrote)
+                                        {
+                                            <li>@b.Title
+                                                <ul>
+                                                    @{foreach(Publication p in b.Publications)
+                                                        {
+                                                            <li>@p.Publisher.Name</li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Add Book</h1>
+                <form action="/books" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" asp-for="Book.Title"></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" asp-for="Book.Title">
+                            <span class="alert text-danger" asp-validation-for="Book.Title"></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-2 col-form-label" asp-for="Book.AuthorId"></label>
+                        <div class="col-sm-10">
+                            <select asp-for="Book.AuthorId" class="form-control">
+                                @{foreach(Author a in Model.Authors)
+                                    {
+                                        <option value="@a.AuthorId">@a.Name</option>
+                                    }
+                                }
+                            </select>
+                            <span class="alert text-danger" asp-validation-for="Book.AuthorId"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button class="btn btn-primary">Add Book</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <h1>All Books</h1>
+                <ul class="list-unstyled">
+                        @{foreach(Book b in Model.Books)
                             {
-                                <li>@a.Name</li>
+                                <li>@b.Title written by @b.Author.Name, published by:
+                                    <ul>
+                                        @{foreach(Publication p in b.Publications)
+                                            {
+                                                <li>@p.Publisher.Name</li>
+                                            }
+                                        }
+                                    </ul>
+                                </li>
                             }
                         }
                     </ul>
             </div>
+        </div>
+        <div class="row">
             <div class="col-sm-6">
-                <h1>Add Book</h1>
+                <h1>Add Publisher</h1>
+                <form action="/publishers" method="post">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" asp-for="Publisher.Name"></label>
+                            <div class="col-sm-10">
+                                <input class="form-control" asp-for="Publisher.Name">
+                                <span class="alert text-danger" asp-validation-for="Publisher.Name"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button class="btn btn-primary">Add Publisher</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+            <div class="col-sm-6">
+                <h1>Add Publication</h1>
+                <form action="/publication" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" asp-for="Publication.BookId"></label>
+                        <div class="col-sm-10">
+                                <select asp-for="Publication.BookId" class="form-control">
+                                        @{foreach(Book b in Model.Books)
+                                            {
+                                                <option value="@b.BookId">@b.Title</option>
+                                            }
+                                        }
+                                    </select>
+                            <span class="alert text-danger" asp-validation-for="Publication.BookId"></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-2 col-form-label" asp-for="Publication.PublisherId"></label>
+                        <div class="col-sm-10">
+                            <select  class="form-control">
+                                @{foreach(Publisher p in Model.Publishers)
+                                    {
+                                        <option value="@p.PublisherId">@p.Name</option>
+                                    }
+                                }
+                            </select>
+                            <span class="alert text-danger" asp-validation-for="Publication.PublisherId"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button class="btn btn-primary">Create Publication</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -3,14 +3,16 @@ using System;
 using BooksAndAuthors.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BooksAndAuthors.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20190319165116_AddingPublishers")]
+    partial class AddingPublishers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,6 +46,8 @@ namespace BooksAndAuthors.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<long?>("PublisherId");
+
                     b.Property<string>("Title")
                         .IsRequired();
 
@@ -53,34 +57,14 @@ namespace BooksAndAuthors.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Books");
-                });
-
-            modelBuilder.Entity("BooksAndAuthors.Models.Publication", b =>
-                {
-                    b.Property<int>("PublicationId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("BookId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("PublisherId");
-
-                    b.Property<DateTime>("UpdatedAt");
-
-                    b.HasKey("PublicationId");
-
-                    b.HasIndex("BookId");
-
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Publications");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("BooksAndAuthors.Models.Publisher", b =>
                 {
-                    b.Property<int>("PublisherId")
+                    b.Property<long>("PublisherId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreatedAt");
@@ -101,19 +85,10 @@ namespace BooksAndAuthors.Migrations
                         .WithMany("Wrote")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
 
-            modelBuilder.Entity("BooksAndAuthors.Models.Publication", b =>
-                {
-                    b.HasOne("BooksAndAuthors.Models.Book", "Book")
-                        .WithMany("Publications")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BooksAndAuthors.Models.Publisher", "Publisher")
-                        .WithMany("Publications")
-                        .HasForeignKey("PublisherId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("BooksAndAuthors.Models.Publisher")
+                        .WithMany("Published")
+                        .HasForeignKey("PublisherId");
                 });
 #pragma warning restore 612, 618
         }
