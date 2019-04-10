@@ -31,7 +31,6 @@ console.log(typeof(Quote));
 app.get('/', function(req, res){
     res.render('index');
 })
-
 app.get('/quotes', function(req, res) {
     let temp;
     Quote.find({})
