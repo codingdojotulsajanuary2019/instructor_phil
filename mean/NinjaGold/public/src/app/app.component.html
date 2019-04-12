@@ -1,0 +1,30 @@
+<div class="hero-head has-text-centered">
+    <h1 class="title is-1 is-info">Welcome to {{ title }}!</h1>
+    <h4 *ngIf="game" class="title is-4">Score: {{ game.score }}</h4>
+    <div *ngIf="!name" class="content">
+      <label class="lable">Name:
+        <input type="text" class="input" (change)="createGame($event)">
+      </label>
+    </div>
+</div>
+<div *ngIf="game" class="hero-body columns has-text-centered">
+    <div class="column">
+      <p class="subtitle is-4">House</p>
+      <button class="button is-small is-info" (click)="findGold('house')">Find(earn 2-5 golds)</button>
+    </div>
+    <div class="column">
+      <p class="subtitle is-4">Farm</p>
+      <button class="button is-small is-info" (click)="findGold('farm')">Find(earn 10-20 golds)</button>
+    </div>
+    <div class="column">
+      <p class="subtitle is-4">Cave</p>
+      <button class="button is-small is-info" (click)="findGold('cave')">Find(earn 5-10 golds)</button>
+    </div>
+    <div class="column">
+      <p class="subtitle is-4">Casino</p>
+      <button class="button is-small is-info" (click)="findGold('casino')">Find(risk 0-50 golds)</button>
+    </div>
+</div>
+<div *ngIf="game" class="hero-foot">
+  <p *ngFor="let activity of game.log">{{ activity }}</p>
+</div>
