@@ -1,0 +1,11 @@
+<p>
+  record-show works!
+</p>
+{{ variableInShowComponent | json }}
+<ul *ngFor="let record of variableInShowComponent">
+  <li >{{ record.Title }}</li>
+  <li >{{ record.Artist }}</li>
+  <li >{{ record.Date }}</li>
+  <li><button (click)="sendRecordToEdit(record)">Edit</button></li>
+</ul>
+<app-record-edit *ngIf="ShowRecord" [recordToUpdate]="EditRecord" [showRecord]="ShowRecord"></app-record-edit>
