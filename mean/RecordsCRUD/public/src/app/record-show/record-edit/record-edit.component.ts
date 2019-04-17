@@ -8,7 +8,7 @@ import { Record } from 'src/app/record';
 })
 export class RecordEditComponent implements OnInit {
   @Input() recordToUpdate: Record;
-  @Input() showRecord: Record;
+  @Input() showRecord={status: false, record:{}};
 
   constructor() { }
 
@@ -16,10 +16,11 @@ export class RecordEditComponent implements OnInit {
   }
 
   updateRecord(){;
-    this.recordToUpdate.Title = this.showRecord.Title;
-    this.recordToUpdate.Artist = this.showRecord.Artist;
-    this.recordToUpdate.Date = this.showRecord.Date;
-    this.showRecord = undefined;
+    this.recordToUpdate.Title = this.showRecord.record['Title'];
+    this.recordToUpdate.Artist = this.showRecord.record['Artist'];
+    this.recordToUpdate.Date = this.showRecord.record['Date'];
+    this.showRecord.status = false;
+    // this.recordToUpdate = this.showRecord;
   }
 
 }

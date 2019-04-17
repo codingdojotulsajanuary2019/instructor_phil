@@ -8,4 +8,4 @@
   <li >{{ record.Date }}</li>
   <li><button (click)="sendRecordToEdit(record)">Edit</button></li>
 </ul>
-<app-record-edit *ngIf="ShowRecord" [recordToUpdate]="EditRecord" [showRecord]="ShowRecord"></app-record-edit>
+<app-record-edit *ngIf="ShowRecord.status" [recordToUpdate]="EditRecord" [showRecord]="ShowRecord"></app-record-edit>

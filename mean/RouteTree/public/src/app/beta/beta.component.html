@@ -1,0 +1,6 @@
+<p>
+  beta works!
+</p>
+<a [routerLink]="['childOne']">Child One show</a> | <a [routerLink]="['/beta', 'childTwo']">Child Two Show</a> | <a [routerLink]="['/']">Home</a>
+<router-outlet></router-outlet>
+<button (click)="goHome()">Home</button>

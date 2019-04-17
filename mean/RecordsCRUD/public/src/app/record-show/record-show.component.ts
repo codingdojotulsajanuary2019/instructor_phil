@@ -9,7 +9,7 @@ import { Record } from '../record';
 export class RecordShowComponent implements OnInit {
   @Input() variableInShowComponent:Array<Record>;
   EditRecord: Record;
-  ShowRecord: Record;
+  ShowRecord = {status: false, record:{}};
 
   constructor() { }
 
@@ -19,7 +19,8 @@ export class RecordShowComponent implements OnInit {
   sendRecordToEdit(record: Record){
     // create a copy of the record to change
     this.EditRecord = record;
-    this.ShowRecord = new Record(record.Title, record.Artist, record.Date);
+    this.ShowRecord.status = true;
+    this.ShowRecord.record = new Record(record.Title, record.Artist, record.Date);
   }
 
 }
