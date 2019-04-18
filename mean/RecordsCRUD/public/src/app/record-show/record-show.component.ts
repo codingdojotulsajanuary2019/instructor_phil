@@ -20,7 +20,7 @@ export class RecordShowComponent implements OnInit {
     // create a copy of the record to change
     this.EditRecord = record;
     this.ShowRecord.status = true;
-    this.ShowRecord.record = new Record(record.Title, record.Artist, record.Date);
+    this.ShowRecord.record = new Record(record.title, record.artist, record.date);
   }
 
 }

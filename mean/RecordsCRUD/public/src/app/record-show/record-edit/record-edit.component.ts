@@ -16,9 +16,9 @@ export class RecordEditComponent implements OnInit {
   }
 
   updateRecord(){;
-    this.recordToUpdate.Title = this.showRecord.record['Title'];
-    this.recordToUpdate.Artist = this.showRecord.record['Artist'];
-    this.recordToUpdate.Date = this.showRecord.record['Date'];
+    this.recordToUpdate.title = this.showRecord.record['title'];
+    this.recordToUpdate.artist = this.showRecord.record['artist'];
+    this.recordToUpdate.date = this.showRecord.record['date'];
     this.showRecord.status = false;
     // this.recordToUpdate = this.showRecord;
   }

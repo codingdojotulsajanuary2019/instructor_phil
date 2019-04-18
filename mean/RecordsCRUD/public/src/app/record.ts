@@ -1,11 +1,11 @@
 export class Record {
-    Title: String;
-    Artist: String;
-    Date: Number;
+    title: String;
+    artist: String;
+    date: Number;
     
     constructor(Title?:String, Artist?:String, Date?:Number){
-        this.Title = Title;
-        this.Artist = Artist;
-        this.Date = Date;
+        this.title = Title;
+        this.artist = Artist;
+        this.date = Date;
     }
 }

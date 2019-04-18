@@ -1,0 +1,9 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="bg-secondary">
+    <div class="container col-10 pb-3" style="height: 700px;">
+        <h3 class="display-4 text-white mb-2 text-center">Rate my cakes</h3>
+        <app-add-cake [cakeToAdd]="newCake" (parentMethod)="getAll($event)"></app-add-cake>
+        <app-show-all-cake *ngIf="allCakesFromApp" [allCakes]="allCakesFromApp" (parentMethod)="getAll($event)"></app-show-all-cake>
+    </div>
+</div>
+<router-outlet></router-outlet>

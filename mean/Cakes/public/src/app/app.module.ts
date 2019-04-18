@@ -1,26 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecordShowComponent } from './record-show/record-show.component';
-import { RecordAddComponent } from './record-add/record-add.component';
-import { RecordEditComponent } from './record-show/record-edit/record-edit.component';
-import { HttpService } from './http.service';
+import { AddCAkeComponent } from './add-cake/add-cake.component';
+import { ShowAllCakeComponent } from './show-all-cake/show-all-cake.component';
+import { ShowOneComponent } from './show-all-cake/show-one/show-one.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecordShowComponent,
-    RecordAddComponent,
-    RecordEditComponent
+    AddCAkeComponent,
+    ShowAllCakeComponent,
+    ShowOneComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
     HttpClientModule
   ],
   providers: [HttpService],
